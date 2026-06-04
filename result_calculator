@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Result Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 font-sans">
+
+<header class="bg-indigo-700 text-white py-5 shadow">
+  <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Student Result Calculator</h1>
+    <p class="text-sm text-indigo-100">Simple marksheet project</p>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto p-6">
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <div class="lg:col-span-2 space-y-6">
+
+      <div class="bg-white p-6 rounded-xl shadow border border-slate-200">
+        <h2 class="text-lg font-bold mb-4 text-slate-800">Student Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input id="name" type="text" placeholder="Student Name" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+          <input id="roll" type="text" placeholder="Roll Number" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow border border-slate-200">
+        <h2 class="text-lg font-bold mb-4 text-slate-800">Enter Marks</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input id="m1" type="number" placeholder="English Marks" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+          <input id="m2" type="number" placeholder="Maths Marks" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+          <input id="m3" type="number" placeholder="Science Marks" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+          <input id="m4" type="number" placeholder="Computer Marks" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500">
+          <input id="m5" type="number" placeholder="History Marks" class="border border-slate-300 p-3 rounded-lg outline-none focus:border-indigo-500 md:col-span-2">
+        </div>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <button onclick="result()" class="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2.5 rounded-lg">Calculate Result</button>
+          <button onclick="resetData()" class="bg-slate-600 hover:bg-slate-700 text-white px-5 py-2.5 rounded-lg">Reset</button>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow border border-slate-200">
+        <h2 class="text-lg font-bold mb-4 text-slate-800">Marksheet</h2>
+        <div id="output" class="text-slate-600">Student result will appear here.</div>
+      </div>
+
+    </div>
+
+    <div class="space-y-6">
+
+      <div class="bg-white p-6 rounded-xl shadow border border-slate-200">
+        <h2 class="text-lg font-bold mb-4 text-slate-800">Grade Rules</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
+            <span class="font-medium text-slate-700">A+</span>
+            <span class="text-slate-600">90 and above</span>
+          </div>
+          <div class="flex justify-between bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
+            <span class="font-medium text-slate-700">A</span>
+            <span class="text-slate-600">75 to 89</span>
+          </div>
+          <div class="flex justify-between bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
+            <span class="font-medium text-slate-700">B</span>
+            <span class="text-slate-600">60 to 74</span>
+          </div>
+          <div class="flex justify-between bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
+            <span class="font-medium text-slate-700">C</span>
+            <span class="text-slate-600">40 to 59</span>
+          </div>
+          <div class="flex justify-between bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+            <span class="font-medium text-red-700">Fail</span>
+            <span class="text-red-600">Below 40</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow border border-slate-200">
+        <h2 class="text-lg font-bold mb-4 text-slate-800">Project Highlights</h2>
+        <p class="text-slate-600 mb-2">This calculator shows:</p>
+        <p class="text-slate-700">• Total marks</p>
+        <p class="text-slate-700">• Percentage</p>
+        <p class="text-slate-700">• Grade</p>
+        <p class="text-slate-700">• Final result</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+function result() {
+  var a = document.getElementById("name").value;
+  var b = document.getElementById("roll").value;
+  var c = Number(document.getElementById("m1").value);
+  var d = Number(document.getElementById("m2").value);
+  var e = Number(document.getElementById("m3").value);
+  var f = Number(document.getElementById("m4").value);
+  var g = Number(document.getElementById("m5").value);
+
+  if (a == "" || b == "" || document.getElementById("m1").value == "" || document.getElementById("m2").value == "" || document.getElementById("m3").value == "" || document.getElementById("m4").value == "" || document.getElementById("m5").value == "") {
+    alert("Please fill all details");
+    return;
+  }
+
+  var h = c + d + e + f + g;
+  var i = Math.round((h / 5) * 100) / 100;
+  var j = "";
+  var k = "";
+  var l = "";
+  var m = "#0f172a";
+  var n = "#f8fafc";
+  var o = "#e2e8f0";
+
+  if (c < 40 || d < 40 || e < 40 || f < 40 || g < 40) {
+    j = "Fail";
+    k = "Fail";
+    l = "Needs Improvement";
+    m = "#b91c1c";
+    n = "#fef2f2";
+    o = "#fecaca";
+  } else if (i >= 90) {
+    j = "A+";
+    k = "Pass";
+    l = "Excellent";
+    m = "#166534";
+    n = "#f0fdf4";
+    o = "#bbf7d0";
+  } else if (i >= 75) {
+    j = "A";
+    k = "Pass";
+    l = "Very Good";
+    m = "#1d4ed8";
+    n = "#eff6ff";
+    o = "#bfdbfe";
+  } else if (i >= 60) {
+    j = "B";
+    k = "Pass";
+    l = "Good";
+    m = "#7c3aed";
+    n = "#f5f3ff";
+    o = "#ddd6fe";
+  } else if (i >= 40) {
+    j = "C";
+    k = "Pass";
+    l = "Average";
+    m = "#b45309";
+    n = "#fffbeb";
+    o = "#fde68a";
+  } else {
+    j = "Fail";
+    k = "Fail";
+    l = "Needs Improvement";
+    m = "#b91c1c";
+    n = "#fef2f2";
+    o = "#fecaca";
+  }
+
+  document.getElementById("output").innerHTML =
+    "<div style='border:1px solid #e2e8f0; border-radius:12px; overflow:hidden;'>" +
+    "<div style='background:#eef2ff; padding:12px 16px; border-bottom:1px solid #c7d2fe;'>" +
+    "<p style='font-size:18px; font-weight:bold; color:#312e81;'>Student Marksheet</p>" +
+    "</div>" +
+    "<div style='padding:16px;'>" +
+    "<div style='display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;'>" +
+    "<p><b>Name:</b> " + a + "</p>" +
+    "<p><b>Roll No:</b> " + b + "</p>" +
+    "</div>" +
+    "<div style='border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; margin-bottom:14px;'>" +
+    "<div style='display:flex; justify-content:space-between; background:#f8fafc; padding:10px 14px; font-weight:bold; border-bottom:1px solid #e2e8f0;'><span>Subject</span><span>Marks</span></div>" +
+    "<div style='display:flex; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #e2e8f0;'><span>English</span><span>" + c + "</span></div>" +
+    "<div style='display:flex; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #e2e8f0;'><span>Maths</span><span>" + d + "</span></div>" +
+    "<div style='display:flex; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #e2e8f0;'><span>Science</span><span>" + e + "</span></div>" +
+    "<div style='display:flex; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #e2e8f0;'><span>Computer</span><span>" + f + "</span></div>" +
+    "<div style='display:flex; justify-content:space-between; padding:10px 14px;'><span>History</span><span>" + g + "</span></div>" +
+    "</div>" +
+    "<div style='display:grid; grid-template-columns:1fr 1fr; gap:12px;'>" +
+    "<div style='border:1px solid #e2e8f0; border-radius:10px; padding:12px; background:#f8fafc;'><p><b>Total</b></p><p style='margin-top:4px;'>" + h + " / 500</p></div>" +
+    "<div style='border:1px solid #e2e8f0; border-radius:10px; padding:12px; background:#f8fafc;'><p><b>Percentage</b></p><p style='margin-top:4px;'>" + i + "%</p></div>" +
+    "<div style='border:1px solid " + o + "; border-radius:10px; padding:12px; background:" + n + ";'><p><b>Grade</b></p><p style='margin-top:4px; color:" + m + "; font-weight:bold;'>" + j + "</p></div>" +
+    "<div style='border:1px solid " + o + "; border-radius:10px; padding:12px; background:" + n + ";'><p><b>Result</b></p><p style='margin-top:4px; color:" + m + "; font-weight:bold;'>" + k + "</p></div>" +
+    "</div>" +
+    "<div style='margin-top:14px; border:1px solid " + o + "; background:" + n + "; color:" + m + "; border-radius:10px; padding:12px; font-weight:bold;'>Remark: " + l + "</div>" +
+    "</div>" +
+    "</div>";
+}
+
+function resetData() {
+  document.getElementById("name").value = "";
+  document.getElementById("roll").value = "";
+  document.getElementById("m1").value = "";
+  document.getElementById("m2").value = "";
+  document.getElementById("m3").value = "";
+  document.getElementById("m4").value = "";
+  document.getElementById("m5").value = "";
+  document.getElementById("output").innerHTML = "Student result will appear here.";
+}
+</script>
+
+</body>
+</html>
